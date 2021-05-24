@@ -1,0 +1,14 @@
+.imga{
+    display:block;
+    width: 570px;
+    margin: auto;
+}
+
+@media screen and (max-width: 860px) {
+  .imga{
+     display:flex; 
+     justify-content:center;
+     height:100%;
+     width: 100%;
+  }
+}
