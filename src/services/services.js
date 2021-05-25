@@ -40,3 +40,19 @@ export const getId = async (id) =>{
 
     }
 }
+
+export const getQuote = async (name) =>{
+    try {
+        if(name !== ''){
+            let url = `https://www.breakingbadapi.com/api/quote?author=${name}`
+            const response = await fetch(url)
+            const data = await response.json()
+            return data
+        }else{
+            return null
+        }
+        
+    } catch (error) {
+
+    }
+}

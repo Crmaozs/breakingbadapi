@@ -16,11 +16,10 @@ function App () {
   const fetchItems = async () =>{
     try {
       setIsLoading(true)
-      const data = await getItems(5, 5 * page)
+      const data = await getItems(3, 3 * page)
       setItems(data)
       setIsLoading(false)
-      console.log(data);
-      setTotal(Math.ceil(62/5))
+      setTotal(Math.ceil(62/3))
     }catch(error){
 
     }

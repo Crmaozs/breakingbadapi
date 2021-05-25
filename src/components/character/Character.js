@@ -1,7 +1,24 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { getQuote } from '../../services/services'
 import './Character.css'
 
 const Character = ({item}) => {
+
+  const [quote, setQuote] = useState([])
+
+  const fetchQuote = async () =>{
+    try {
+      const data = await getQuote(item.name)
+      setQuote(data)
+    }catch(error){
+
+    }
+  }
+
+  useEffect(() => { 
+    fetchQuote()
+  }, [])
+
     return (
     <div className='card'>
       <div className='card-inner'>
@@ -11,18 +28,9 @@ const Character = ({item}) => {
         <div className='card-back'>
           <h1>{item.name}</h1>
           <ul>
-            <li>
-              <strong>Actor Name:</strong> {item.portrayed}
-            </li>
-            <li>
-              <strong>Nickname:</strong> {item.nickname}
-            </li>
-            <li>
-              <strong>Birthday:</strong> {item.birthday}
-            </li>
-            <li>
-              <strong>Status:</strong> {item.status}
-            </li>
+            {quote.map((item) =>(
+              <li><strong>Quote:</strong> {item.quote}</li>
+            ))}
           </ul>
         </div>
       </div>
